@@ -14,19 +14,23 @@ module.exports = function(config) {
 
 
         // list of files / patterns to load in the browser
-        files: [
-            'test-main.js', {
-                pattern: 'test/**/*Spec.js',
-                included: false
-            }, {
-                pattern: 'src/**/*.js',
-                included: false
-            }
-        ],
+        files: [{
+            pattern: 'test-main.js',
+            included: true
+        }, {
+            pattern: 'test/**/*Spec.js',
+            included: false
+        }, {
+            pattern: 'src/**/*.js',
+            included: false
+        }, {
+            pattern: 'bower_components/**/*.js',
+            included: false
+        }],
 
 
         // list of files to exclude
-        exclude: [],
+        exclude: ['src/require.config.js'],
 
 
         // preprocess matching files before serving them to the browser
@@ -39,7 +43,7 @@ module.exports = function(config) {
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['coverage', 'dots'],
+        reporters: ['coverage', 'progress'],
 
         coverageReporter: {
             // specify a common output directory

@@ -1,3 +1,3 @@
-require('src/app', function(app) {
+require('app', function(app) {
     console.log(app);
 });

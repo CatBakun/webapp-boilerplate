@@ -1,0 +1,27 @@
+{
+  "name": "boilerplate",
+  "version": "0.0.0",
+  "authors": [
+    "CatBakun <eabakun@gmail.com>"
+  ],
+  "main": "src/main.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "mithril",
+    "boilerplate"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "mithril": "~0.1.28"
+  }
+}
