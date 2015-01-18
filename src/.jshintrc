@@ -11,6 +11,8 @@
   "eqnull": true,
   "predef": ["exports"],
   "globals": {
-    "define": false
+    "define": false,
+    "console": false,
+    "require": false
   }
 }

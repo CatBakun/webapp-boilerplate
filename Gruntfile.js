@@ -18,7 +18,7 @@ module.exports = function(grunt) {
                 stripBanners: true
             },
             dist: {
-                src: ['lib/<%= pkg.name %>.js'],
+                src: ['src/main.js'],
                 dest: 'dist/<%= pkg.name %>.js'
             },
         },
@@ -97,5 +97,5 @@ module.exports = function(grunt) {
 
     // Default task.
     grunt.registerTask('default', ['jsbeautifier', 'jshint', 'karma:unit', 'concat', 'uglify']);
-	grunt.registerTask('tdd', ['karma:unitDev']);
+    grunt.registerTask('tdd', ['karma:unitDev']);
 };
