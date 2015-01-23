@@ -84,6 +84,16 @@ module.exports = function(grunt) {
                 'karma.conf.js',
                 'package.json'
             ]
+        },
+        msx: {
+            app: {
+                files: [{
+                    expand: true,
+                    cwd: 'test/fixtures',
+                    src: '**/*.jsx',
+                    dest: 'test/expected',
+                }]
+            }
         }
     });
 
@@ -94,6 +104,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-jsbeautifier');
+    grunt.loadNpmTasks('grunt-msx');
 
     grunt.loadTasks('grunt-tasks');
 
