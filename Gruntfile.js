@@ -95,7 +95,16 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-jsbeautifier');
 
+    grunt.loadTasks('grunt-tasks');
+
     // Default task.
-    grunt.registerTask('default', ['jsbeautifier', 'jshint', 'karma:unit', 'concat', 'uglify']);
+    grunt.registerTask('default', [
+        'jsbeautifier',
+        'jshint',
+        'karma:unit',
+        'showme-coverage',
+        'concat',
+        'uglify'
+    ]);
     grunt.registerTask('tdd', ['karma:unitDev']);
 };

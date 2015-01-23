@@ -16,8 +16,8 @@ require.config({
     // Karma serves files under /base, which is the basePath from your config file
     baseUrl: '/base/src',
 
-	paths: {
-       'mithril': '../bower_components/mithril/mithril'
+    paths: {
+        'mithril': '../bower_components/mithril/mithril'
     },
 
     // dynamically load all test files
