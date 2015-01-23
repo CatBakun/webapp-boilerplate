@@ -16,5 +16,6 @@
     "it": true,
     "define": true,
     "window": true
-  }
+  },
+  "-W030": true
 }

@@ -1,3 +1,9 @@
-require('app', function(app) {
-    console.log(app);
+require([
+    'mithril',
+    'app'
+], function(
+    m,
+    app
+) {
+    m.module(document.getElementById("app-container"), app);
 });

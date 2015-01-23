@@ -75,6 +75,13 @@ module.exports = function(grunt) {
                 files: '<%= jshint.test.src %>',
                 tasks: ['jshint:test', 'nodeunit']
             },
+            msx: {
+                files: ['src/**/*.jsx'],
+                tasks: ['msx'],
+                options: {
+                    spawn: false,
+                }
+            }
         },
         jsbeautifier: {
             files: [
@@ -89,10 +96,29 @@ module.exports = function(grunt) {
             app: {
                 files: [{
                     expand: true,
-                    cwd: 'test/fixtures',
+                    cwd: 'src',
                     src: '**/*.jsx',
-                    dest: 'test/expected',
+                    dest: 'src',
                 }]
+            }
+        },
+        index: {
+            build: {
+                dir: '.',
+                src: [
+                    'bower_components/requirejs/require.js',
+                    'src/require.config.js',
+                    'src/main.js'
+                ]
+            }
+        },
+        connect: {
+            server: {
+                options: {
+                    port: 9000,
+                    base: '.',
+                    keepalive: true
+                }
             }
         }
     });
@@ -105,12 +131,15 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-jsbeautifier');
     grunt.loadNpmTasks('grunt-msx');
+    grunt.loadNpmTasks('grunt-index-html-template');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
     grunt.loadTasks('grunt-tasks');
 
     // Default task.
     grunt.registerTask('default', [
         'jsbeautifier',
+        'msx',
         'jshint',
         'karma:unit',
         'showme-coverage',

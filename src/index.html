@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html ng-app="example-app">
+<head>
+  <title>SPA Example</title>
+</head>
+<body>
+
+<div id="app-container"></div>
+
+<% scripts.forEach( function ( file ) { %>
+<script type="text/javascript" src="<%= file %>"></script>
+<% }); %>
+
+</body>
+</html>

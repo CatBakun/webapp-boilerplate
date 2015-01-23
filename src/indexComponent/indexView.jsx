@@ -1,8 +1,9 @@
+/** @jsx m */
 define(['mithril'], function(m){
-    return function(model){
+    return function(ctrl){
         return <div>
-            <p>{model.counter()}</p>
-            <button onclick={model.count()}>{model.message()}</button>
-        </div>
+            <h1>{ctrl.model.counter()}</h1>
+            <button onclick={ctrl.model.count.bind(ctrl.model)}>{ctrl.model.message()}</button>
+        </div>;
     };
 });
