@@ -1,49 +1,53 @@
 {
-    "name": "boilerplate",
-    "description": "The best project ever.",
-    "version": "0.1.0",
-    "homepage": "https://github.com/z/boilerplate",
-    "author": {
-        "name": "CatBakun",
-        "email": "eabakun@gmail.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/z/boilerplate.git"
-    },
-    "bugs": {
-        "url": "https://github.com/z/boilerplate/issues"
-    },
-    "licenses": [{
-        "type": "MIT",
-        "url": "https://github.com/z/boilerplate/blob/master/LICENSE-MIT"
-    }],
-    "main": "src/main",
-    "engines": {
-        "node": ">= 0.10.0"
-    },
-    "scripts": {
-        "test": "grunt karma"
-    },
-    "devDependencies": {
-        "chai": "^1.10.0",
-        "grunt": "^0.4.5",
-        "grunt-contrib-concat": "~0.3.0",
-        "grunt-contrib-connect": "^0.9.0",
-        "grunt-contrib-jshint": "~0.6.0",
-        "grunt-contrib-uglify": "~0.2.0",
-        "grunt-contrib-watch": "^0.6.1",
-        "grunt-index-html-template": "^0.2.5",
-        "grunt-jsbeautifier": "^0.2.7",
-        "grunt-karma": "^0.10.1",
-        "grunt-msx": "^0.1.4",
-        "karma": "^0.12.31",
-        "karma-chai": "^0.1.0",
-        "karma-chai-plugins": "^0.2.4",
-        "karma-chrome-launcher": "^0.1.7",
-        "karma-cli": "0.0.4",
-        "karma-coverage": "^0.2.7",
-        "karma-phantomjs-launcher": "^0.1.4"
-    },
-    "keywords": []
+  "name": "boilerplate",
+  "description": "The best project ever.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/z/boilerplate",
+  "author": {
+    "name": "CatBakun",
+    "email": "eabakun@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/z/boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/z/boilerplate/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/z/boilerplate/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "src/main",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "grunt karma"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-connect": "^0.9.0",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-index-html-template": "^0.2.5",
+    "grunt-jsbeautifier": "^0.2.7",
+    "grunt-karma": "^0.10.1",
+    "grunt-msx": "^0.1.4",
+    "grunt-webdriver": "^0.4.8",
+    "karma": "^0.12.31",
+    "karma-chai": "^0.1.0",
+    "karma-chai-plugins": "^0.2.4",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-cli": "0.0.4",
+    "karma-coverage": "^0.2.7",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "selenium-webdriver": "^2.44.0"
+  },
+  "keywords": []
 }

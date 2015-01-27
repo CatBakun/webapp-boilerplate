@@ -120,7 +120,23 @@ module.exports = function(grunt) {
                     keepalive: true
                 }
             }
-        }
+        },
+        webdriver: {
+			options: {
+				desiredCapabilities: {
+					browserName: 'chrome'
+				}
+			},
+			base: {
+				tests: ['e2e/test/**/*Spec.js'],
+				options: {
+					// overwrite default settings
+					desiredCapabilities: {
+						browserName: 'chrome'
+					}
+				}
+			}
+		  }
     });
 
     // These plugins provide necessary tasks.
@@ -133,7 +149,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-msx');
     grunt.loadNpmTasks('grunt-index-html-template');
     grunt.loadNpmTasks('grunt-contrib-connect');
-
+	grunt.loadNpmTasks('grunt-webdriver');
     grunt.loadTasks('grunt-tasks');
 
     // Default task.
