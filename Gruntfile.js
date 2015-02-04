@@ -2,6 +2,16 @@
 
 module.exports = function(grunt) {
 
+    // Private variables
+    var lessMiddleware = require('less-middleware'),
+        jsbeautifierFiles = [
+            'src/**/*.js',
+            'test/**/*.js',
+            'Gruntfile.js',
+            'karma.conf.js',
+            'package.json'
+        ];
+
     // Project configuration.
     grunt.initConfig({
         // Metadata.
@@ -81,16 +91,27 @@ module.exports = function(grunt) {
                 options: {
                     spawn: false,
                 }
+            },
+            less: {
+                tasks: ['less'],
+                files: ['src/**/*.less'],
+                options: {
+                    spawn: false
+                }
+            },
+            css: {
+                files: ['src/**/*.css', 'src/**/*.css.map'],
+                options: {
+                    livereload: true
+                }
+            },
+            jsbeautifier: {
+                tasks: ['jsbeautifier'],
+                files: jsbeautifierFiles
             }
         },
         jsbeautifier: {
-            files: [
-                'src/**/*.js',
-                'test/**/*.js',
-                'Gruntfile.js',
-                'karma.conf.js',
-                'package.json'
-            ]
+            files: jsbeautifierFiles
         },
         msx: {
             app: {
@@ -117,26 +138,63 @@ module.exports = function(grunt) {
                 options: {
                     port: 9000,
                     base: '.',
-                    keepalive: true
+                    keepalive: true,
+                    middleware: function(connect, options, middlewares) {
+                        middlewares.unshift(lessMiddleware);
+                        return middlewares;
+                    }
                 }
             }
         },
         webdriver: {
-			options: {
-				desiredCapabilities: {
-					browserName: 'chrome'
-				}
-			},
-			base: {
-				tests: ['e2e/test/**/*Spec.js'],
-				options: {
-					// overwrite default settings
-					desiredCapabilities: {
-						browserName: 'chrome'
-					}
-				}
-			}
-		  }
+            options: {
+                desiredCapabilities: {
+                    browserName: 'chrome'
+                }
+            },
+            base: {
+                tests: ['e2e/test/**/*Spec.js'],
+                options: {
+                    // overwrite default settings
+                    desiredCapabilities: {
+                        browserName: 'chrome'
+                    }
+                }
+            }
+        },
+        less: {
+            options: {
+                sourceMap: true,
+                sourceMapBasepath: function(srcFile) {
+                    var fileAbspath = '/' + srcFile;
+                    this.sourceMapURL = fileAbspath.replace('.less', '.css.map');
+                    return fileAbspath;
+                },
+                sourceMapRootpath: '/'
+            },
+            files: {
+                expand: true,
+                cwd: "src",
+                src: ['**/*.less'],
+                dest: "src",
+                ext: ".css"
+            }
+        },
+        concurrent: {
+            code: {
+                tasks: [
+                    'watch:msx',
+                    'watch:less',
+                    'watch:jsbeautifier',
+                    'connect:server',
+                    'watch:css'
+                ],
+                options: {
+                    logConcurrentOutput: true,
+                    limit: 10
+                }
+            }
+        }
     });
 
     // These plugins provide necessary tasks.
@@ -149,13 +207,16 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-msx');
     grunt.loadNpmTasks('grunt-index-html-template');
     grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.loadNpmTasks('grunt-webdriver');
+    grunt.loadNpmTasks('grunt-webdriver');
     grunt.loadTasks('grunt-tasks');
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-concurrent');
 
     // Default task.
     grunt.registerTask('default', [
         'jsbeautifier',
         'msx',
+        'less',
         'jshint',
         'karma:unit',
         'showme-coverage',
@@ -163,4 +224,5 @@ module.exports = function(grunt) {
         'uglify'
     ]);
     grunt.registerTask('tdd', ['karma:unitDev']);
+    grunt.registerTask('code', ['default', 'concurrent:code']);
 };

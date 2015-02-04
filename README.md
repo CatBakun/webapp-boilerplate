@@ -1,42 +1,13 @@
-# boilerplate
+# webapp-boilerplate
 
-The best project ever.
+A full stack webapp boilerplate. Minification, karma with mocha unit tests, jasmine e2e tests, coverages reports, development mode with watch, on-the-fly code bautified, less compiling, mithril msx compiling. 2way data binding with mithril, requirejs amd code.
 
 ## Getting Started
-### On the server
-Install the module with: `npm install boilerplate`
+### On the commandline
+Install global deps: `npm install -g karma-cli grunt-cli`
+Install development deps: `npm install`
 
-```javascript
-var boilerplate = require('boilerplate');
-boilerplate.awesome(); // "awesome"
-```
-
-### In the browser
-Download the [production version][min] or the [development version][max].
-
-[min]: https://raw.github.com/z/boilerplate/master/dist/boilerplate.min.js
-[max]: https://raw.github.com/z/boilerplate/master/dist/boilerplate.js
-
-In your web page:
-
-```html
-<script src="dist/boilerplate.min.js"></script>
-<script>
-awesome(); // "awesome"
-</script>
-```
-
-In your code, you can attach boilerplate's methods to any object.
-
-```html
-<script>
-var exports = Bocoup.utils;
-</script>
-<script src="dist/boilerplate.min.js"></script>
-<script>
-Bocoup.utils.awesome(); // "awesome"
-</script>
-```
+Start coding: `grunt code`
 
 ## Documentation
 _(Coming soon)_

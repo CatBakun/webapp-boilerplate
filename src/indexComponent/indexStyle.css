@@ -1,0 +1,9 @@
+.indexComponent {
+  color: #F00;
+  border-color: #fdcdea;
+}
+.indexComponent div {
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+/*# sourceMappingURL=/src/indexComponent/indexStyle.css.map */

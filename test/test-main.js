@@ -19,6 +19,11 @@ require.config({
     paths: {
         'mithril': '../bower_components/mithril/mithril'
     },
+    map: {
+        '*': {
+            'css': '/base/bower_components/require-css/css.js'
+        }
+    },
 
     // dynamically load all test files
     deps: allTestFiles,
