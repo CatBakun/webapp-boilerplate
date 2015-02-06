@@ -19,6 +19,7 @@ require.config({
     paths: {
         'mithril': '../bower_components/mithril/mithril'
     },
+    // require-css map config works only with abs path in this context. 
     map: {
         '*': {
             'css': '/base/bower_components/require-css/css.js'

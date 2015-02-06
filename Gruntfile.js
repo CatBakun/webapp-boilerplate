@@ -193,6 +193,12 @@ module.exports = function(grunt) {
                     logConcurrentOutput: true,
                     limit: 10
                 }
+            },
+            e2e: {
+                tasks: [
+                    'connect:server',
+                    'webdriver'
+                ]
             }
         }
     });
@@ -225,4 +231,5 @@ module.exports = function(grunt) {
     ]);
     grunt.registerTask('tdd', ['karma:unitDev']);
     grunt.registerTask('code', ['default', 'concurrent:code']);
+    grunt.registerTask('e2e', ['concurrent:e2e']);
 };

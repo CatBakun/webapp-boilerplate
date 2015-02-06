@@ -24,6 +24,9 @@ module.exports = function(config) {
             pattern: 'src/**/*.js',
             included: false
         }, {
+            pattern: 'src/**/*.css',
+            included: false
+        }, {
             pattern: 'bower_components/**/*.js',
             included: false
         }],
