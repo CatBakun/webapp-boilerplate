@@ -22,7 +22,7 @@ require.config({
     // require-css map config works only with abs path in this context. 
     map: {
         '*': {
-            'css': '/base/bower_components/require-css/css.js'
+            'less': '/base/bower_components/require-css/css.js'
         }
     },
 

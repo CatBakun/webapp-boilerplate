@@ -21,26 +21,6 @@ module.exports = function(grunt) {
             '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
             '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
             ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
-        // Task configuration.
-        concat: {
-            options: {
-                banner: '<%= banner %>',
-                stripBanners: true
-            },
-            dist: {
-                src: ['src/main.js'],
-                dest: 'dist/<%= pkg.name %>.js'
-            },
-        },
-        uglify: {
-            options: {
-                banner: '<%= banner %>'
-            },
-            dist: {
-                src: '<%= concat.dist.dest %>',
-                dest: 'dist/<%= pkg.name %>.min.js'
-            },
-        },
         karma: {
             unit: {
                 configFile: 'karma.conf.js',
@@ -200,12 +180,26 @@ module.exports = function(grunt) {
                     'webdriver'
                 ]
             }
+        },
+        requirejs: {
+            compile: {
+                options: {
+                    baseUrl: 'src',
+                    name: 'main',
+                    out: 'dist/<%= pkg.name %>.min.js',
+                    paths: {
+                        'mithril': '../bower_components/mithril/mithril',
+                        'less': '../bower_components/require-less/less',
+                        'less-builder': '../bower_components/require-less/less-builder',
+                        'normalize': '../bower_components/require-less/normalize'
+                    },
+                    optimize: "uglify2",
+                }
+            }
         }
     });
 
     // These plugins provide necessary tasks.
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -217,6 +211,7 @@ module.exports = function(grunt) {
     grunt.loadTasks('grunt-tasks');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-concurrent');
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
 
     // Default task.
     grunt.registerTask('default', [
@@ -226,8 +221,7 @@ module.exports = function(grunt) {
         'jshint',
         'karma:unit',
         'showme-coverage',
-        'concat',
-        'uglify'
+        'requirejs'
     ]);
     grunt.registerTask('tdd', ['karma:unitDev']);
     grunt.registerTask('code', ['default', 'concurrent:code']);

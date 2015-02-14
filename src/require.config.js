@@ -5,7 +5,7 @@ require.config({
     },
     map: {
         '*': {
-            'css': '../bower_components/require-css/css.js'
+            'less': '../bower_components/require-css/css.js'
         }
     }
 });

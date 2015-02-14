@@ -1,7 +1,7 @@
 /** @jsx m */
 define([
     'mithril',
-    'css!indexComponent/indexStyle'
+    'less!indexComponent/indexStyle'
 ], function(
     m,
     indexStyle
@@ -9,7 +9,7 @@ define([
     return function(ctrl){
         return <div class="indexComponent">
             <h1>{ctrl.model.counter()}</h1>
-            <button onclick={ctrl.model.count.bind(ctrl.model)}>{ctrl.model.message()}</button>
+            <button class="indexComponentButton" onclick={ctrl.model.count.bind(ctrl.model)}>{ctrl.model.message()}</button>
         </div>;
     };
 });
