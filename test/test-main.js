@@ -17,7 +17,8 @@ require.config({
     baseUrl: '/base/src',
 
     paths: {
-        'mithril': '../bower_components/mithril/mithril'
+        'mithril': '../bower_components/mithril/mithril',
+        'i18n': '../bower_components/requirejs-i18n/i18n'
     },
     // require-css map config works only with abs path in this context. 
     map: {
@@ -25,7 +26,13 @@ require.config({
             'less': '/base/bower_components/require-css/css.js'
         }
     },
-
+    config: {
+        //Set the config for the i18n
+        //module ID
+        i18n: {
+            locale: 'fr-fr'
+        }
+    },
     // dynamically load all test files
     deps: allTestFiles,
 

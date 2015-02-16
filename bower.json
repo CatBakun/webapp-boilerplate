@@ -24,6 +24,7 @@
   "devDependencies": {
     "mithril": "~0.1.28",
     "requirejs": "~2.1.15",
-    "require-css": "~0.1.8"
+    "require-css": "~0.1.8",
+    "requirejs-i18n": "~2.0.4"
   }
 }

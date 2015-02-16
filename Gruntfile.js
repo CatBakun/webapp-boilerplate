@@ -10,7 +10,23 @@ module.exports = function(grunt) {
             'Gruntfile.js',
             'karma.conf.js',
             'package.json'
-        ];
+        ],
+
+        getCompileDeps = function(options) {
+            /**
+             * Lets compile all the locale modules, prefered single file
+             * build over lazy load of i18n modules.
+             *
+             * In the src directorie, look for nls folders, get inside js files
+             * and remove their js extension. return the i18n modules array.
+             **/
+            return grunt.file.expand({
+                    cwd: options.cwd
+                }, '**/nls/**/*.js')
+                .map(function(i18nModule) {
+                    return i18nModule.replace('.js', '');
+                });
+        };
 
     // Project configuration.
     grunt.initConfig({
@@ -187,11 +203,15 @@ module.exports = function(grunt) {
                     baseUrl: 'src',
                     name: 'main',
                     out: 'dist/<%= pkg.name %>.min.js',
+                    deps: getCompileDeps({
+                        cwd: 'src'
+                    }),
                     paths: {
                         'mithril': '../bower_components/mithril/mithril',
                         'less': '../bower_components/require-less/less',
                         'less-builder': '../bower_components/require-less/less-builder',
-                        'normalize': '../bower_components/require-less/normalize'
+                        'normalize': '../bower_components/require-less/normalize',
+                        'i18n': '../bower_components/requirejs-i18n/i18n'
                     },
                     optimize: "uglify2",
                 }
