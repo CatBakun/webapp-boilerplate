@@ -8,7 +8,6 @@ module.exports = function(grunt) {
             'src/**/*.js',
             'test/**/*.js',
             'Gruntfile.js',
-            'karma.conf.js',
             'package.json'
         ],
 
@@ -39,13 +38,13 @@ module.exports = function(grunt) {
             ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
         karma: {
             unit: {
-                configFile: 'karma.conf.js',
+                configFile: 'test/unit/karma.conf.js',
                 options: {
                     singleRun: true
                 }
             },
             unitDev: {
-                configFile: 'karma.conf.js',
+                configFile: 'test/unit/karma.conf.js',
                 options: {
                     singleRun: false
                 }
@@ -65,7 +64,7 @@ module.exports = function(grunt) {
                 src: ['src/**/*.js']
             },
             test: {
-                src: ['test/**/*.js']
+                src: ['test/**/*.js', '!test/unit/build/**/*']
             },
         },
         watch: {
@@ -149,7 +148,7 @@ module.exports = function(grunt) {
                 }
             },
             base: {
-                tests: ['e2e/test/**/*Spec.js'],
+                tests: ['test/e2e/**/*Spec.js'],
                 options: {
                     // overwrite default settings
                     desiredCapabilities: {

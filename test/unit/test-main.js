@@ -20,7 +20,7 @@ require.config({
         'mithril': '../bower_components/mithril/mithril',
         'i18n': '../bower_components/requirejs-i18n/i18n'
     },
-    // require-css map config works only with abs path in this context. 
+    // require-css map config works only with abs path in this context.
     map: {
         '*': {
             'less': '/base/bower_components/require-css/css.js'

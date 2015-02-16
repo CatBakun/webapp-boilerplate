@@ -5,7 +5,7 @@ module.exports = function(config) {
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '',
+        basePath: '../../',
 
 
         // frameworks to use
@@ -15,16 +15,19 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [{
-            pattern: 'test/test-main.js',
+            pattern: 'test/unit/test-main.js',
             included: true
         }, {
-            pattern: 'test/**/*Spec.js',
+            pattern: 'test/unit/**/*Spec.js',
             included: false
         }, {
             pattern: 'src/**/*.js',
             included: false
         }, {
             pattern: 'src/**/*.css',
+            included: false
+        }, {
+            pattern: 'src/**/*.css.map',
             included: false
         }, {
             pattern: 'bower_components/**/*.js',
@@ -50,7 +53,7 @@ module.exports = function(config) {
 
         coverageReporter: {
             // specify a common output directory
-            dir: 'build/reports/coverage',
+            dir: 'test/unit/reports/coverage',
             reporters: [
                 // reporters not supporting the `file` property
                 {
