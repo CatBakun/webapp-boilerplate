@@ -7,6 +7,7 @@ module.exports = function(grunt) {
         jsbeautifierFiles = [
             'src/**/*.js',
             'test/**/*.js',
+            '!test/unit/reports/**/*',
             'Gruntfile.js',
             'package.json'
         ],
@@ -16,7 +17,7 @@ module.exports = function(grunt) {
              * Lets compile all the locale modules, prefered single file
              * build over lazy load of i18n modules.
              *
-             * In the src directorie, look for nls folders, get inside js files
+             * In the src directory, look for nls folders, get inside js files
              * and remove their js extension. return the i18n modules array.
              **/
             return grunt.file.expand({
@@ -64,7 +65,7 @@ module.exports = function(grunt) {
                 src: ['src/**/*.js']
             },
             test: {
-                src: ['test/**/*.js', '!test/unit/build/**/*']
+                src: ['test/**/*.js', '!test/unit/reports/**/*']
             },
         },
         watch: {
@@ -233,7 +234,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-requirejs');
 
     // Default task.
-    grunt.registerTask('default', [
+    grunt.registerTask('default', ['build', 'code']);
+    grunt.registerTask('build', [
         'jsbeautifier',
         'msx',
         'less',
@@ -243,6 +245,6 @@ module.exports = function(grunt) {
         'requirejs'
     ]);
     grunt.registerTask('tdd', ['karma:unitDev']);
-    grunt.registerTask('code', ['default', 'concurrent:code']);
+    grunt.registerTask('code', ['concurrent:code']);
     grunt.registerTask('e2e', ['concurrent:e2e']);
 };

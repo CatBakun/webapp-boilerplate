@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="18"  lines-covered="13"  line-rate="0.7222"  branches-valid="0"  branches-covered="0"  branch-rate="1"  timestamp="1424074074785" complexity="0" version="0.1">
+<coverage lines-valid="18"  lines-covered="13"  line-rate="0.7222"  branches-valid="0"  branches-covered="0"  branch-rate="1"  timestamp="1445025356394" complexity="0" version="0.1">
 <sources>
-	<source>/home/z/boilerplate</source>
+	<source>/home/likewise-open/GLOBANT/enrique.bakun/mithril/webapp-boilerplate</source>
 </sources>
 <packages>
 	<package name="src"  line-rate="1"  branch-rate="1" >

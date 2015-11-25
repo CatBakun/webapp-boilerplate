@@ -9,10 +9,17 @@ define([
     indexStyle
 ){
     return function(ctrl){
-        return m("div", {class:"indexComponent"}, [
-            m("h1", [indexI18n.greets]),
-            m("h2", [ctrl.model.counter()]),
-            m("button", {class:"indexComponentButton", onclick:ctrl.model.count.bind(ctrl.model)}, [ctrl.model.message()])
-        ]);
+        return {tag: "div", attrs: {class:"indexComponent"}, children: [
+            {tag: "h1", attrs: {}, children: [indexI18n.greets]}, 
+            {tag: "h2", attrs: {}, children: [ctrl.model.counter()]}, 
+            "/**" + ' ' +
+             "* Comment test" + ' ' +
+             "**/", 
+            {tag: "button", attrs: {
+                class:"indexComponentButton", 
+                onclick:ctrl.model.count.bind(ctrl.model)}, children: [
+                    ctrl.model.message()
+                ]}
+        ]};
     };
 });

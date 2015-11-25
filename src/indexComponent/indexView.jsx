@@ -12,7 +12,11 @@ define([
         return <div class="indexComponent">
             <h1>{indexI18n.greets}</h1>
             <h2>{ctrl.model.counter()}</h2>
-            <button class="indexComponentButton" onclick={ctrl.model.count.bind(ctrl.model)}>{ctrl.model.message()}</button>
+            <button
+                class="indexComponentButton"
+                onclick={ctrl.model.count.bind(ctrl.model)}>
+                    {ctrl.model.message()}
+                </button>
         </div>;
     };
 });

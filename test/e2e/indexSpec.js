@@ -20,8 +20,8 @@ test.describe('index page', function() {
 
         driver.takeScreenshot().then(function(data) {
             writeScreenshot(data, 'out1.png');
+            driver.quit();
         });
 
-        driver.quit();
     });
 });

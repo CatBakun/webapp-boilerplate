@@ -25,6 +25,8 @@
     "mithril": "~0.1.28",
     "requirejs": "~2.1.15",
     "require-css": "~0.1.8",
-    "requirejs-i18n": "~2.0.4"
+    "requirejs-i18n": "~2.0.4",
+    "bootstrap": "~3.3.5",
+    "require-less": "~0.1.5"
   }
 }
